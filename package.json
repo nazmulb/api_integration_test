@@ -42,13 +42,20 @@
     "jest-html-reporter": "^2.6.0",
     "jsdoc": "^3.6.3",
     "jsdoc-strip-async-await": "^0.1.0",
+    "nodemon": "^1.19.2",
     "pre-commit": "^1.2.2",
-    "nodemon": "^1.19.1",
     "supertest": "^4.0.2"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "form-urlencoded": "^4.0.0",
-    "lodash": "^4.17.15"
+    "http-errors": "^1.7.3",
+    "lodash": "^4.17.15",
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.18.4",
+    "sequelize-cli": "^5.5.1"
   }
 }
