@@ -8,13 +8,34 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      companyId: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: 'Companies',
+          key: 'id'
+        }
+      },
       designation: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       department: {
         type: Sequelize.STRING
       },
       joiningDate: {
+        allowNull: false,
+        defaultValue: Sequelize.NOW,
         type: Sequelize.DATEONLY
       },
       salary: {

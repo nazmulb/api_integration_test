@@ -1,28 +1,28 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    firstName: { 
-      type: DataTypes.STRING, 
+    firstName: {
       allowNull: false,
+      type: DataTypes.STRING
     },
     lastName: DataTypes.STRING,
-    email: { 
-      type: DataTypes.STRING,
-      unique: true,
+    email: {
       allowNull: false,
+      unique: true,
+      type: DataTypes.STRING,
       validate: {
         isEmail: true
       }
     },
-    password: { 
-      type: DataTypes.STRING, 
+    password: {
       allowNull: false,
+      type: DataTypes.STRING
     },
   }, {});
   User.associate = function(models) {
     // associations can be defined here
     User.hasOne(models.Employee, {
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     });
   };
   return User;

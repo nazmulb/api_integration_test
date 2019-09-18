@@ -1,15 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Employee = sequelize.define('Employee', {
-    designation: { 
-      type: DataTypes.STRING, 
+    designation: {
       allowNull: false,
+      type: DataTypes.STRING
     },
     department: DataTypes.STRING,
-    joiningDate: { 
-      type: DataTypes.DATEONLY, 
+    joiningDate: {
       allowNull: false,
-      defaultValue: sequelize.NOW,
+      defaultValue: DataTypes.NOW,
+      type: DataTypes.DATEONLY
     },
     salary: DataTypes.FLOAT
   }, {});
