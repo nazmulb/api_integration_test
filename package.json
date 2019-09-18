@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Api integration testing framework using jest and supertest",
   "scripts": {
+    "migrate": "./node_modules/.bin/sequelize db:migrate",
+    "migrate:reset": "./node_modules/.bin/sequelize db:migrate:undo:all && npm run migrate",
     "test": "jest --config=./jest.config.json",
     "test:coverage": "jest --config=./jest.config.json --coverage",
+    "pretest": "NODE_ENV=test npm run migrate:reset",
     "lint": "./node_modules/.bin/eslint lib",
     "lint:fix": "npm run lint -- --fix",
     "docs": "rm -rf docs && jsdoc -c jsdoc.json -d docs",
