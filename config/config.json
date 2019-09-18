@@ -2,25 +2,31 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
+    "database": "apimicro_dev",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "define": {
+      "underscored": false
+    }
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "apimicro_test",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "define": {
+      "underscored": false
+    }
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "apimicro_prod",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "define": {
+      "underscored": false
+    }
   }
 }
