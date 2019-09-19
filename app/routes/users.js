@@ -1,10 +1,11 @@
 const express = require("express");
 
 const router = express.Router();
+const { UserController } = require("../controllers");
+
+const uc = new UserController();
 
 /* GET users listing. */
-router.get("/about", (req, res) => {
-	res.json({ msg: "Users Listing Page" });
-});
+router.get("/", uc.list);
 
 module.exports = router;

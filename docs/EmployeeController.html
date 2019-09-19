@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Class: Utility</title>
+	<title>Api Integration Testing Framework Class: EmployeeController</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,16 +65,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Utility</h1>
+	<h1 class="page-title">Class: EmployeeController</h1>
 <section>
 
 <header>
     
         <h2>
-        Utility
+        EmployeeController
         </h2>
         
-            <div class="class-description"><p>Common Utility Related Methods</p></div>
+            <div class="class-description"><p>Employee Controller Related Methods</p></div>
         
     
 </header>
@@ -86,7 +86,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Utility"><span class="type-signature"></span>new Utility()</h4>
+    <h4 class="name" id="EmployeeController"><span class="type-signature"></span>new EmployeeController()</h4>
     
     
 </dt>
@@ -136,8 +136,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="helpers_Utility.js.html">helpers/Utility.js</a>,
-				 <a href="helpers_Utility.js.html#sunlight-1-line-4">line 4</a>
+				<a href="controllers_EmployeeController.js.html">controllers/EmployeeController.js</a>,
+				 <a href="controllers_EmployeeController.js.html#sunlight-1-line-6">line 6</a>
 			</li>
 		</ul>
 	</dd>
@@ -188,7 +188,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="letterCount"><span class="type-signature"></span>letterCount(str, char)</h4>
+    <h4 class="name" id="list"><span class="type-signature"></span>list(req, res)</h4>
     
     
 </dt>
@@ -196,7 +196,7 @@
 
     
     <div class="description">
-        <p>Count letter</p>
+        <p>Employees listing page</p>
     </div>
     
 
@@ -231,13 +231,13 @@
 
         <tr>
             
-                <td class="name"><code>str</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
 
@@ -248,20 +248,20 @@
 
             
 
-            <td class="description last"><p>given string</p></td>
+            <td class="description last"><p>request object</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>char</code></td>
+                <td class="name"><code>res</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
 
@@ -272,7 +272,7 @@
 
             
 
-            <td class="description last"><p>given character</p></td>
+            <td class="description last"><p>response object</p></td>
         </tr>
 
     
@@ -316,8 +316,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="helpers_Utility.js.html">helpers/Utility.js</a>,
-				 <a href="helpers_Utility.js.html#sunlight-1-line-13">line 13</a>
+				<a href="controllers_EmployeeController.js.html">controllers/EmployeeController.js</a>,
+				 <a href="controllers_EmployeeController.js.html#sunlight-1-line-15">line 15</a>
 			</li>
 		</ul>
 	</dd>
@@ -345,10 +345,6 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    <p>count - no of characters</p>
-</div>
-
 
 
 <dl>
@@ -357,7 +353,7 @@
     </dt>
     <dd>
         
-<span class="param-type">number</span>
+<span class="param-type">json</span>
 
 
 
@@ -370,7 +366,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">util.letterCount(&quot;test&quot;, &quot;t&quot;);</pre>
+    <pre class="sunlight-highlight-javascript">ec.list();</pre>
 
 
     

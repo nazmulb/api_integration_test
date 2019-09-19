@@ -1,15 +1,18 @@
 const express = require("express");
 
 const router = express.Router();
+const { IndexController } = require("../controllers");
+
+const ic = new IndexController();
 
 /* GET home page. */
-router.get("/", function (req, res) {
-	res.json({ msg: "Welcome" });
-});
+router.get("/", ic.index);
 
 /* GET home page. */
-router.get("/about", (req, res) => {
-	res.json({ msg: "About Page" });
-});
+router.get("/about", ic.about);
 
-module.exports = router;
+module.exports = {
+	indexRouter: router,
+	usersRouter: require("./users"),
+	employeesRouter: require("./employees"),
+};

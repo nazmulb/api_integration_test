@@ -3,12 +3,14 @@ const express = require("express");
 const logger = require("morgan");
 
 const app = express();
-const routes = require("./routes");
+const { indexRouter, usersRouter, employeesRouter } = require("./routes");
 
 app.use(logger("tiny"));
 app.use(express.json());
 
-app.use("/api", routes);
+app.use("/api", indexRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/employees", employeesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
