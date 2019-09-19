@@ -6,12 +6,12 @@
     },
     "plugins": ["plugins/markdown", "node_modules/jsdoc-strip-async-await"],
     "source": {
-        "include": ["lib"]
+        "include": ["app"]
     },
     "templates": {
         "theme": "cosmo",
         "outputSourceFiles": true,
-        "systemName": "Unit Testing Framework",
+        "systemName": "Api Integration Testing Framework",
         "copyright": "Copyright 2019",
         "linenums": true
     }

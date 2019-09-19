@@ -8,7 +8,7 @@
     "test": "jest --config=./jest.config.json",
     "test:coverage": "jest --config=./jest.config.json --coverage",
     "pretest": "NODE_ENV=test npm run migrate:reset",
-    "lint": "./node_modules/.bin/eslint lib",
+    "lint": "./node_modules/.bin/eslint app",
     "lint:fix": "npm run lint -- --fix",
     "docs": "rm -rf docs && jsdoc -c jsdoc.json -d docs",
     "git:push": "git add . && git commit -m \"added codes\" && git push origin master"
@@ -50,6 +50,7 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "debug": "^4.1.1",
     "dotenv": "^8.1.0",
