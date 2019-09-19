@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Api integration testing framework using jest and supertest",
   "scripts": {
+    "start": "node ./bin/www",
+    "start:dev": "./node_modules/.bin/nodemon ./bin/www",
     "migrate": "./node_modules/.bin/sequelize db:migrate",
     "migrate:reset": "./node_modules/.bin/sequelize db:migrate:undo:all && npm run migrate",
     "test": "jest --config=./jest.config.json",
@@ -51,13 +53,13 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
     "debug": "^4.1.1",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "form-urlencoded": "^4.0.0",
     "http-errors": "^1.7.3",
     "lodash": "^4.17.15",
+    "morgan": "^1.9.1",
     "mysql2": "^1.7.0",
     "sequelize": "^5.18.4",
     "sequelize-cli": "^5.5.1"

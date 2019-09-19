@@ -40,6 +40,9 @@ module.exports = {
       "no-useless-escape": "off",
       "no-unneeded-ternary": "off",
       "no-restricted-properties": "off",
+      "no-restricted-globals": "off",
+      "radix": "off",
+      "no-use-before-define": "off",
     },
   };
   
