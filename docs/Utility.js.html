@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Index</title>
+	<title>Api Integration Testing Framework Source: Utility.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -60,36 +60,44 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
+		<h1 class="page-title">Source: Utility.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * Common Utility Related Methods
+ */
+class Utility {
+	/**
+     * Count letter
+     * @param {string} str - given string
+     * @param {string} char - given character
+     * @return {number} count - no of characters
+     * @example
+     *      util.letterCount("test", "t");
+     */
+	letterCount(str, char) {
+		let count = 0;
+		for (let i = 0; i &lt;= str.length; i += 1) {
+			if (str[i] === char) {
+				count += 1;
+			}
+		}
 
+		return count;
+	}
+}
 
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><h1>Api Integration Testing Framework</h1></article>
-    </section>
-
-
+module.exports = Utility;
+</pre>
+    </article>
+</section>
 
 
 
@@ -100,10 +108,6 @@
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
