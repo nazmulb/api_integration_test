@@ -8,7 +8,7 @@ const ic = new IndexController();
 /* GET home page. */
 router.get("/", ic.index);
 
-/* GET home page. */
+/* GET about page. */
 router.get("/about", ic.about);
 
 module.exports = {
