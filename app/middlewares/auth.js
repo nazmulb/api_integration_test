@@ -10,7 +10,6 @@ const auth = async (req, res, next) => {
 		const user = await getUser.execute(req.body.email);
 
 		const isValid = bcrypt.compareSync(req.body.password, user.password);
-		console.log(isValid);
 
 		if (!isValid) {
 			return res.json("Unauthorized: Invalid password.");
