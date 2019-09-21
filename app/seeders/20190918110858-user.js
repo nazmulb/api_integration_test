@@ -1,19 +1,25 @@
+const config = require(`${__dirname}/../config`);
+const bcrypt = require("bcrypt");
 
 module.exports = {
-	up: (queryInterface) => queryInterface.bulkInsert(
-		"Users",
-		[
-			{
-				firstName: "Nazmul",
-				lastName: "Basher",
-				email: "nazmul.basher@gmail.com",
-				password: "123",
-				createdAt: new Date(),
-				updatedAt: new Date(),
-			},
-		],
-		{},
-	),
+	up: async (queryInterface) => {
+		const hashedPassword = await bcrypt.hash("123", parseInt(config.SALT_ROUNDS));
+
+		return queryInterface.bulkInsert(
+			"Users",
+			[
+				{
+					firstName: "Nazmul",
+					lastName: "Basher",
+					email: "nazmul.basher@gmail.com",
+					password: hashedPassword,
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				},
+			],
+			{},
+		);
+	},
 
 	down: (queryInterface) => queryInterface.bulkDelete("Users", null, {}),
 };
