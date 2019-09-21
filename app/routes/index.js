@@ -12,7 +12,7 @@ router.get("/", pc.index);
 router.get("/about", pc.about);
 
 module.exports = {
-	indexRouter: router,
+	pageRouter: router,
 	usersRouter: require("./users"),
 	employeesRouter: require("./employees"),
 };

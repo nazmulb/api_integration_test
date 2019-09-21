@@ -3,12 +3,12 @@ const express = require("express");
 const logger = require("morgan");
 
 const app = express();
-const { indexRouter, usersRouter, employeesRouter } = require("./routes");
+const { pageRouter, usersRouter, employeesRouter } = require("./routes");
 
 app.use(logger("tiny"));
 app.use(express.json());
 
-app.use("/api", indexRouter);
+app.use("/api", pageRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/employees", employeesRouter);
 
