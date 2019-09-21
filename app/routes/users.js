@@ -7,6 +7,4 @@ const uc = new UserController();
 
 router.get("/", uc.list);
 
-router.post("/login", uc.login);
-
 module.exports = router;

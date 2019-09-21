@@ -1,3 +1,4 @@
+const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
@@ -8,10 +9,12 @@ const { pageRouter, usersRouter, employeesRouter } = require("./routes");
 
 app.use(logger("tiny"));
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(checkAuth([
-	"/api/auth",
+	"/api/home",
 	"/api/about",
+	"/api/auth",
 ]));
 
 app.use("/api", pageRouter);

@@ -8,7 +8,7 @@ const checkAuth = (escapeURLs) => (req, res, next) => {
 	}
 
 	try {
-		const token = req.headers.authorization.split(" ")[1];
+		const token = req.headers.auth_token;
 		jwt.verify(token, config.JWT_SECRET_KEY);
 		return next();
 	} catch (e) {

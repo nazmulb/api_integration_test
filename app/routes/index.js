@@ -5,10 +5,8 @@ const { PageController } = require("../controllers");
 
 const pc = new PageController();
 
-/* GET home page. */
-router.get("/", pc.index);
+router.get("/home", pc.index);
 
-/* GET about page. */
 router.get("/about", pc.about);
 
 module.exports = {

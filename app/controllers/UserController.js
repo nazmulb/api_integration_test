@@ -19,21 +19,6 @@ class UserController extends Controller {
 
 		res.json(userList);
 	}
-
-	/**
-     * Process login
-     * @param {object} req - request object
-     * @param {object} res - response object
-     * @return {json}
-     * @example
-     *      uc.login(req, res);
-     */
-	async login(req, res) {
-		const uls = new ServiceFactory().create("UserListService");
-		const userList = await uls.execute();
-
-		res.json(userList);
-	}
 }
 
 module.exports = UserController;
