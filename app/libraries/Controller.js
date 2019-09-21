@@ -1,7 +1,16 @@
 /**
- * Common Controller Related Methods
+ * Abstract Controller Class
  */
 class Controller {
+	/**
+     * Abstract
+     */
+	constructor() {
+		if (new.target === Controller) {
+			throw new Error("Controller can't be instantiated directly.");
+		}
+	}
+
 	/**
      * Home page
      * @param {object} req - request object

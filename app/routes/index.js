@@ -1,15 +1,15 @@
 const express = require("express");
 
 const router = express.Router();
-const { IndexController } = require("../controllers");
+const { PageController } = require("../controllers");
 
-const ic = new IndexController();
+const pc = new PageController();
 
 /* GET home page. */
-router.get("/", ic.index);
+router.get("/", pc.index);
 
 /* GET about page. */
-router.get("/about", ic.about);
+router.get("/about", pc.about);
 
 module.exports = {
 	indexRouter: router,

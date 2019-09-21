@@ -1,4 +1,5 @@
-const Controller = require("./Controller");
+const { Controller } = require("../libraries");
+const ServiceFactory = require("../services");
 
 /**
  * User Controller Related Methods
@@ -13,7 +14,8 @@ class UserController extends Controller {
      *      uc.list();
      */
 	list(req, res) {
-		res.json({ msg: "Users Listing Page" });
+		const userList = (new ServiceFactory()).create("UserListService");
+		res.json({ msg: userList.execute() });
 	}
 }
 

@@ -1,4 +1,4 @@
-const Controller = require("./Controller");
+const { Controller } = require("../libraries");
 
 /**
  * Employee Controller Related Methods
