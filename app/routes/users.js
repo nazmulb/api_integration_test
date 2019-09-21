@@ -5,7 +5,8 @@ const { UserController } = require("../controllers");
 
 const uc = new UserController();
 
-/* GET users listing. */
 router.get("/", uc.list);
+
+router.post("/login", uc.login);
 
 module.exports = router;

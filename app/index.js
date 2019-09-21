@@ -3,12 +3,19 @@ const express = require("express");
 const logger = require("morgan");
 
 const app = express();
+const { auth, checkAuth } = require("./middlewares");
 const { pageRouter, usersRouter, employeesRouter } = require("./routes");
 
 app.use(logger("tiny"));
 app.use(express.json());
 
+app.use(checkAuth([
+	"/api/auth",
+	"/api/about",
+]));
+
 app.use("/api", pageRouter);
+app.use("/api/auth", auth);
 app.use("/api/users", usersRouter);
 app.use("/api/employees", employeesRouter);
 
