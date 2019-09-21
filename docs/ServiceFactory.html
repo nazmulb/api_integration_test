@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Class: Controller</title>
+	<title>Api Integration Testing Framework Class: ServiceFactory</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,16 +65,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Controller</h1>
+	<h1 class="page-title">Class: ServiceFactory</h1>
 <section>
 
 <header>
     
         <h2>
-        Controller
+        ServiceFactory
         </h2>
         
-            <div class="class-description"><p>Abstract Controller Class</p></div>
+            <div class="class-description"><p>Service Factory Class</p></div>
         
     
 </header>
@@ -86,16 +86,12 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Controller"><span class="type-signature"></span>new Controller()</h4>
+    <h4 class="name" id="ServiceFactory"><span class="type-signature"></span>new ServiceFactory()</h4>
     
     
 </dt>
 <dd>
 
-    
-    <div class="description">
-        <p>Abstract</p>
-    </div>
     
 
     
@@ -140,8 +136,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="libraries_Controller.js.html">libraries/Controller.js</a>,
-				 <a href="libraries_Controller.js.html#sunlight-1-line-8">line 8</a>
+				<a href="services_ServiceFactory.js.html">services/ServiceFactory.js</a>,
+				 <a href="services_ServiceFactory.js.html#sunlight-1-line-6">line 6</a>
 			</li>
 		</ul>
 	</dd>
@@ -192,7 +188,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="index"><span class="type-signature"></span>index(req, res)</h4>
+    <h4 class="name" id="create"><span class="type-signature"></span>create(name)</h4>
     
     
 </dt>
@@ -200,7 +196,7 @@
 
     
     <div class="description">
-        <p>Home page</p>
+        <p>Factory</p>
     </div>
     
 
@@ -235,13 +231,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -252,31 +248,7 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>name of the class</p></td>
         </tr>
 
     
@@ -320,8 +292,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="libraries_Controller.js.html">libraries/Controller.js</a>,
-				 <a href="libraries_Controller.js.html#sunlight-1-line-22">line 22</a>
+				<a href="services_ServiceFactory.js.html">services/ServiceFactory.js</a>,
+				 <a href="services_ServiceFactory.js.html#sunlight-1-line-14">line 14</a>
 			</li>
 		</ul>
 	</dd>
@@ -357,7 +329,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">object</span>
 
 
 
@@ -370,7 +342,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">c.index();</pre>
+    <pre class="sunlight-highlight-javascript">sf.create(&quot;UserListService&quot;);</pre>
 
 
     
