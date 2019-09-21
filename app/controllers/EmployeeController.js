@@ -13,9 +13,11 @@ class EmployeeController extends Controller {
      * @example
      *      ec.list();
      */
-	list(req, res) {
-		const employeeList = (new ServiceFactory()).create("EmployeeListService");
-		res.json({ msg: employeeList.execute() });
+	async list(req, res) {
+		const els = new ServiceFactory().create("EmployeeListService");
+		const employeeList = await els.execute();
+		console.log(employeeList);
+		res.json(employeeList);
 	}
 }
 
