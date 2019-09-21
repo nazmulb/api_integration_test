@@ -16,7 +16,7 @@ class UserController extends Controller {
 	async list(req, res) {
 		const uls = new ServiceFactory().create("UserListService");
 		const userList = await uls.execute();
-		console.log(userList);
+
 		res.json(userList);
 	}
 }
