@@ -1,4 +1,5 @@
 const { Controller } = require("../libraries");
+const ServiceFactory = require("../services");
 
 /**
  * Employee Controller Related Methods
@@ -13,7 +14,8 @@ class EmployeeController extends Controller {
      *      ec.list();
      */
 	list(req, res) {
-		res.json({ msg: "Employees Listing Page" });
+		const employeeList = (new ServiceFactory()).create("EmployeeListService");
+		res.json({ msg: employeeList.execute() });
 	}
 }
 
