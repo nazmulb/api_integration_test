@@ -1,11 +1,17 @@
 const express = require("express");
 
-const router = express.Router();
+const router = new express.Router();
 const { EmployeeController } = require("../controllers");
 
 const ec = new EmployeeController();
 
-/* GET employees listing. */
-router.get("/", ec.list);
+router
+	.route("/")
+	.get(ec.list);
+
+router
+	.route("/:id")
+	.get(ec.view)
+	.delete(ec.delete);
 
 module.exports = router;

@@ -36,7 +36,11 @@ class UserController extends Controller {
 		const obj = new ServiceFactory().create("GetUserByIdService");
 		const user = await obj.execute(req.params.id);
 
-		return res.json(user);
+		if (user) {
+			return res.json(user);
+		}
+
+		return res.status(404).json("User not found");
 	}
 
 	/**
