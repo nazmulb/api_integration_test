@@ -8,7 +8,7 @@ const { auth, checkAuth } = require("./middlewares");
 const { pageRouter, usersRouter, employeesRouter } = require("./routes");
 
 app.use(logger("tiny"));
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(checkAuth([
