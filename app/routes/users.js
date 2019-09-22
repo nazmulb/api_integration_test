@@ -10,4 +10,10 @@ router
 	.get(uc.list)
 	.post(uc.create);
 
+router
+	.route("/:id")
+	.get(uc.view)
+	.patch(uc.update)
+	.delete(uc.delete);
+
 module.exports = router;

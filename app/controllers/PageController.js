@@ -13,7 +13,7 @@ class PageController extends Controller {
      *      pc.about();
      */
 	about(req, res) {
-		res.json({ msg: "About Page" });
+		return res.json({ msg: "About Page" });
 	}
 }
 

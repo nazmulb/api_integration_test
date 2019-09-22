@@ -14,10 +14,10 @@ class EmployeeController extends Controller {
      *      ec.list();
      */
 	async list(req, res) {
-		const els = new ServiceFactory().create("EmployeeListService");
-		const employeeList = await els.execute();
+		const obj = new ServiceFactory().create("EmployeeListService");
+		const employeeList = await obj.execute();
 
-		res.json(employeeList);
+		return res.json(employeeList);
 	}
 }
 
