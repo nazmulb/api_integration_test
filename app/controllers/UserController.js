@@ -34,7 +34,7 @@ class UserController extends Controller {
      */
 	async create(req, res) {
 		const cu = new ServiceFactory().create("CreateUserService");
-		req.body.password = await bcrypt.hash(req.body.password, parseInt(config.SALT_ROUNDS));
+		req.body.password = (req.body.password !== undefined && req.body.password !== "") ? await bcrypt.hash(req.body.password, parseInt(config.SALT_ROUNDS)) : null;
 		const user = await cu.execute(req.body);
 
 		res.status(201).json(user);

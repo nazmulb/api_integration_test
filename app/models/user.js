@@ -4,6 +4,11 @@ module.exports = (sequelize, DataTypes) => {
 		firstName: {
 			allowNull: false,
 			type: DataTypes.STRING,
+			validate: {
+				notNull: {
+					msg: "Please enter your first name",
+				},
+			},
 		},
 		lastName: DataTypes.STRING,
 		email: {
@@ -11,12 +16,19 @@ module.exports = (sequelize, DataTypes) => {
 			unique: true,
 			type: DataTypes.STRING,
 			validate: {
-				isEmail: true,
+				isEmail: {
+					msg: "Please enter a valid email address",
+				},
 			},
 		},
 		password: {
 			allowNull: false,
 			type: DataTypes.STRING,
+			validate: {
+				notNull: {
+					msg: "Please enter your password",
+				},
+			},
 		},
 	}, {});
 	User.associate = function (models) {
