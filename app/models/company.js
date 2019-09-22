@@ -5,6 +5,11 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			unique: true,
 			type: DataTypes.STRING,
+			validate: {
+				notNull: {
+					msg: "Please enter your company name",
+				},
+			},
 		},
 	}, {});
 	Company.associate = function (models) {

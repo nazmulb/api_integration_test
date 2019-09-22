@@ -4,12 +4,25 @@ module.exports = (sequelize, DataTypes) => {
 		designation: {
 			allowNull: false,
 			type: DataTypes.STRING,
+			validate: {
+				notNull: {
+					msg: "Please enter your designation",
+				},
+			},
 		},
 		department: DataTypes.STRING,
 		joiningDate: {
 			allowNull: false,
 			defaultValue: DataTypes.NOW,
 			type: DataTypes.DATEONLY,
+			validate: {
+				notNull: {
+					msg: "Please enter your joining date",
+				},
+				isDate: {
+					msg: "Please enter a valid date",
+				},
+			},
 		},
 		salary: DataTypes.FLOAT,
 	}, {});
