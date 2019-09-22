@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
 		const isValid = bcrypt.compareSync(req.body.password, user.password);
 
 		if (!isValid) {
-			return res.json("Unauthorized: Invalid password.");
+			return res.status(401).json("Unauthorized: Invalid password.");
 		}
 
 		const newToken = { token: jwt.sign({ email: user.email }, config.JWT_SECRET_KEY) };
