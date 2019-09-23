@@ -47,28 +47,48 @@ class EmployeeController extends Controller {
      *      ec.create(req, res);
      */
 	async create(req, res) {
-		let cobj = new ServiceFactory().create("GetCompanyByNameService");
-		let company = await cobj.execute(req.body.companyName);
+		let obj = new ServiceFactory().create("GetCompanyByNameService");
+		let company = await obj.execute(req.body.companyName);
 
 		if (!company) {
-			cobj = new ServiceFactory().create("CreateCompanyService");
-			company = await cobj.execute(req.body.companyName);
+			obj = new ServiceFactory().create("CreateCompanyService");
+			company = await obj.execute(req.body.companyName);
 
 			if (company.id === undefined || company.id === null) return res.status(404).json(company);
 		}
 		req.body.CompanyId = company.id;
 
-		const uobj = new ServiceFactory().create("GetUserByIdService");
-		const userFound = await uobj.execute(req.body.userId);
+		obj = new ServiceFactory().create("GetUserByIdService");
+		const userFound = await obj.execute(req.body.userId);
 
 		if (!userFound) {
 			return res.status(404).json(`Employee not found with id ${req.body.userId}`);
 		}
 
-		const obj = new ServiceFactory().create("CreateEmployeeService");
+		obj = new ServiceFactory().create("CreateEmployeeService");
 		const employee = await obj.execute(req.body);
 
 		return res.status(201).json(employee);
+	}
+
+	/**
+     * Update employee
+     * @param {object} req - request object
+     * @param {object} res - response object
+     * @return {json} - updated employee
+     * @example
+     *      ec.update(req, res);
+     */
+	async update(req, res) {
+		let obj = new ServiceFactory().create("UpdateEmployeeService");
+		const updated = await obj.execute(req.params.id, req.body);
+		if (updated) {
+			obj = new ServiceFactory().create("GetEmployeeByIdService");
+			const employee = await obj.execute(req.params.id);
+			return res.json(employee);
+		}
+
+		return res.status(404).json("Employee not found");
 	}
 
 	/**
