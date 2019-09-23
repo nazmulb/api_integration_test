@@ -39,6 +39,39 @@ class EmployeeController extends Controller {
 	}
 
 	/**
+     * Create new employee
+     * @param {object} req - request object
+     * @param {object} res - response object
+     * @return {json} - newly created employee
+     * @example
+     *      ec.create(req, res);
+     */
+	async create(req, res) {
+		let cobj = new ServiceFactory().create("GetCompanyByNameService");
+		let company = await cobj.execute(req.body.companyName);
+
+		if (!company) {
+			cobj = new ServiceFactory().create("CreateCompanyService");
+			company = await cobj.execute(req.body.companyName);
+
+			if (company.id === undefined || company.id === null) return res.status(404).json(company);
+		}
+		req.body.CompanyId = company.id;
+
+		const uobj = new ServiceFactory().create("GetUserByIdService");
+		const userFound = await uobj.execute(req.body.userId);
+
+		if (!userFound) {
+			return res.status(404).json(`Employee not found with id ${req.body.userId}`);
+		}
+
+		const obj = new ServiceFactory().create("CreateEmployeeService");
+		const employee = await obj.execute(req.body);
+
+		return res.status(201).json(employee);
+	}
+
+	/**
      * Delete employee
      * @param {object} req - request object
      * @param {object} res - response object

@@ -52,8 +52,8 @@ class UserController extends Controller {
      *      uc.create(req, res);
      */
 	async create(req, res) {
-		const objs = new ServiceFactory().create("GetUserByEmailService");
-		const userFound = await objs.execute(req.body.email);
+		const uobj = new ServiceFactory().create("GetUserByEmailService");
+		const userFound = await uobj.execute(req.body.email);
 
 		if (userFound) {
 			return res.status(409).json(`User Already Exists: There is already a user with email ${userFound.email}`);

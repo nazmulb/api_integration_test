@@ -7,7 +7,8 @@ const ec = new EmployeeController();
 
 router
 	.route("/")
-	.get(ec.list);
+	.get(ec.list)
+	.post(ec.create);
 
 router
 	.route("/:id")
