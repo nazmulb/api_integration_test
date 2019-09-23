@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Source: libraries/Utility.js</title>
+	<title>Api Integration Testing Framework Source: services/UpdateEmployeeService.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,36 +65,34 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: libraries/Utility.js</h1>
+		<h1 class="page-title">Source: services/UpdateEmployeeService.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">/**
- * Common Utility Related Methods
- */
-class Utility {
-	/**
-     * Count letter
-     * @param {string} str - given string
-     * @param {string} char - given character
-     * @return {number} count - no of characters
-     * @example
-     *      util.letterCount("test", "t");
-     */
-	letterCount(str, char) {
-		let count = 0;
-		for (let i = 0; i &lt;= str.length; i += 1) {
-			if (str[i] === char) {
-				count += 1;
-			}
-		}
+            class="sunlight-highlight-javascript linenums">const { Service } = require("../libraries");
+const models = require("../models");
 
-		return count;
+/**
+ * Update employee service class
+ */
+class UpdateEmployeeService extends Service {
+	/**
+     * Execute method of service
+     */
+	async execute(id, data) {
+		try {
+			const [updated] = await models.Employee.update(data, {
+				where: { id },
+			});
+			return updated;
+		} catch (e) {
+			return e.message;
+		}
 	}
 }
 
-module.exports = Utility;
+module.exports = UpdateEmployeeService;
 </pre>
     </article>
 </section>
