@@ -9,7 +9,7 @@
     "migrate:reset": "./node_modules/.bin/sequelize db:migrate:undo:all && npm run migrate",
     "test": "jest --config=./jest.config.json",
     "test:coverage": "jest --config=./jest.config.json --coverage",
-    "lint": "./node_modules/.bin/eslint app",
+    "lint": "./node_modules/.bin/eslint app tests/helpers",
     "lint:fix": "npm run lint -- --fix",
     "docs": "rm -rf docs && jsdoc -c jsdoc.json -d docs",
     "git:push": "git add . && git commit -m \"added codes\" && git push origin master"
