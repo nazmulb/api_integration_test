@@ -1,3 +1,3 @@
 module.exports = {
-	JestHelper: require("./JestHelper"),
+	Helper: require("./Helper"),
 };
