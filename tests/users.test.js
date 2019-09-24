@@ -25,4 +25,15 @@ describe("User Routes", () => {
         expect(response.body.length).toBe(1);
         expect(response.statusCode).toBe(200);
     });
+
+    test("Create user", async () => {
+        const response = await helper.post("/users", { firstName: "Nabil", lastName: "Al Noor", email: "nabil.al.noor@gmail.com", password: "565" }, token);
+        expect(response.body.firstName).toBe("Nabil");
+        expect(response.body.lastName).toBe("Al Noor");
+        expect(response.body.email).toBe("nabil.al.noor@gmail.com");
+        expect(response.body).toHaveProperty("id");
+        expect(response.body).toHaveProperty("password");
+        expect(typeof response.body).toBe('object');
+        expect(response.statusCode).toBe(201);
+    });
 });
