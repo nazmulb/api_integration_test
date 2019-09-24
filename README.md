@@ -4,7 +4,7 @@
 [![GitHub commits](https://badgen.net/github/commits/nazmulb/api_integration_test)](https://github.com/nazmulb/api_integration_test/commits/master)
 [![GitHub stars](https://badgen.net/github/stars/nazmulb/api_integration_test)](https://github.com/nazmulb/api_integration_test)
 
-This is a node microservice using `express`, `sequelize`, `jwt` & `mysql` and api integration framework using using `jest` & `supertest`.
+This is a node microservice using `express`, `sequelize`, `jwt` & `mysql` and also an api integration framework using `jest` & `supertest`.
 
 ### Overview:
 
@@ -14,6 +14,7 @@ We need the following to have a node microservice and api integration framework:
 - [Sequelize](https://sequelize.org/master/manual/getting-started.html)
 - [Jwt](https://jwt.io/)
 - [Jest](https://jestjs.io/en/)
+- [Supertest](https://www.npmjs.com/package/supertest)
 - [jest-html-reporter](https://www.npmjs.com/package/jest-html-reporter)
 
 ### Setup:
