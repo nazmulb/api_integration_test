@@ -32,7 +32,13 @@
     "jest",
     "supertest",
     "tdd",
-    "testing"
+    "testing",
+    "microservice",
+    "node",
+    "express",
+    "jwt",
+    "sequelize",
+    "mysql"
   ],
   "author": "Nazmul Basher <nazmul.basher@gmail.com>",
   "license": "ISC",
