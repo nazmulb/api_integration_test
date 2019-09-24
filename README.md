@@ -46,7 +46,9 @@ npm test
 npm run test:coverage
 ```
 
-<img alt="Test Coverage Report" src="https://raw.githubusercontent.com/nazmulb/api_integration_test/master/images/coverage.png" width="900px" />
+<img alt="Test Coverage Report" src="https://raw.githubusercontent.com/nazmulb/api_integration_test/master/images/coverage1.png" width="900px" />
+
+<img alt="Test Coverage Report" src="https://raw.githubusercontent.com/nazmulb/api_integration_test/master/images/coverage2.png" width="900px" />
 
 ### Test Report:
 
