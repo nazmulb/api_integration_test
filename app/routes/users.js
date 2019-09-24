@@ -13,7 +13,7 @@ router
 router
 	.route("/:id")
 	.get(uc.view)
-	.patch(uc.update)
+	.put(uc.update)
 	.delete(uc.delete);
 
 module.exports = router;

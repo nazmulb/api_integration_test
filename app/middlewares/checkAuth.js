@@ -12,7 +12,7 @@ const checkAuth = (escapeURLs) => (req, res, next) => {
 		jwt.verify(token, config.JWT_SECRET_KEY);
 		return next();
 	} catch (e) {
-		return res.status(401).json("Unauthorized: Missing or invalid auth token.");
+		return res.status(401).json({ message: "Unauthorized: Missing or invalid auth token." });
 	}
 };
 

@@ -20,7 +20,7 @@ class Controller {
      *      c.index();
      */
 	index(req, res) {
-		return res.json({ msg: "Welcome" });
+		return res.json({ message: "Welcome" });
 	}
 }
 

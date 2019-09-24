@@ -53,14 +53,16 @@ class Helper {
      * Put
      * @param {string} routeUrl - route url
 	 * @param {object} data - data to be passed
+	 * @param {string} token - auth token
      * @return {object}
      * @example
      *      helper.put("/users/1", { firstName: "Nazmul" });
      */
-	async put(routeUrl, data) {
+	async put(routeUrl, data, token = "") {
 		const response = await request(this.app)
 			.put(`${this.routePrefix}${routeUrl}`)
 			.send(formurlencoded(data))
+			.set("auth_token", token)
 			.set("Accept", "application/json");
 
 		return response;
@@ -69,12 +71,15 @@ class Helper {
 	/**
      * Delete
      * @param {string} routeUrl - route url
+	 * @param {string} token - auth token
      * @return {object}
      * @example
      *      helper.delete("/users/1");
      */
-	async delete(routeUrl) {
-		const response = await request(this.app).delete(`${this.routePrefix}${routeUrl}`);
+	async delete(routeUrl, token = "") {
+		const response = await request(this.app)
+			.delete(`${this.routePrefix}${routeUrl}`)
+			.set("auth_token", token);
 
 		return response;
 	}

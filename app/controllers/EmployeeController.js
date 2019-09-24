@@ -35,7 +35,7 @@ class EmployeeController extends Controller {
 			return res.json(employee);
 		}
 
-		return res.status(404).json("Employee not found");
+		return res.status(404).json({ message: "Employee not found" });
 	}
 
 	/**
@@ -62,7 +62,7 @@ class EmployeeController extends Controller {
 		const userFound = await obj.execute(req.body.userId);
 
 		if (!userFound) {
-			return res.status(404).json(`Employee not found with id ${req.body.userId}`);
+			return res.status(404).json({ message: `Employee not found with id ${req.body.userId}` });
 		}
 
 		obj = new ServiceFactory().create("CreateEmployeeService");
@@ -88,7 +88,7 @@ class EmployeeController extends Controller {
 			return res.json(employee);
 		}
 
-		return res.status(404).json("Employee not found");
+		return res.status(404).json({ message: "Employee not found" });
 	}
 
 	/**
@@ -104,10 +104,10 @@ class EmployeeController extends Controller {
 		const deleted = await obj.execute(req.params.id);
 
 		if (deleted) {
-			return res.json("Employee deleted");
+			return res.json({ message: "Employee deleted" });
 		}
 
-		return res.status(404).json("Employee not found");
+		return res.status(404).json({ message: "Employee not found" });
 	}
 }
 

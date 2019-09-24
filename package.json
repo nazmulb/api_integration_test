@@ -12,7 +12,7 @@
     "test": "jest --config=./jest.config.json",
     "test:coverage": "jest --config=./jest.config.json --coverage",
     "test:setup": "npm run db:reset && npm run migrate && npm run seed",
-    "pretest": "NODE_ENV=test npm run test:setup",
+    "pretest": "NODE_ENV=test npm run db:reset",
     "lint": "./node_modules/.bin/eslint app tests/helpers",
     "lint:fix": "npm run lint -- --fix",
     "docs": "rm -rf docs && jsdoc -c jsdoc.json -d docs",

@@ -40,7 +40,7 @@ class UserController extends Controller {
 			return res.json(user);
 		}
 
-		return res.status(404).json("User not found");
+		return res.status(404).json({ message: "User not found" });
 	}
 
 	/**
@@ -56,7 +56,7 @@ class UserController extends Controller {
 		const userFound = await obj.execute(req.body.email);
 
 		if (userFound) {
-			return res.status(409).json(`User Already Exists: There is already a user with email ${userFound.email}`);
+			return res.status(409).json({ message: `User Already Exists: There is already a user with email ${userFound.email}` });
 		}
 
 		obj = new ServiceFactory().create("CreateUserService");
@@ -83,7 +83,7 @@ class UserController extends Controller {
 			return res.json(user);
 		}
 
-		return res.status(404).json("User not found");
+		return res.status(404).json({ message: "User not found" });
 	}
 
 	/**
@@ -99,10 +99,10 @@ class UserController extends Controller {
 		const deleted = await obj.execute(req.params.id);
 
 		if (deleted) {
-			return res.json("User deleted");
+			return res.json({ message: "User deleted" });
 		}
 
-		return res.status(404).json("User not found");
+		return res.status(404).json({ message: "User not found" });
 	}
 }
 
