@@ -1,4 +1,19 @@
 {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+        "/node_modules/",
+        "/docs/",
+        "/reports/",
+        "/coverage/",
+        "/bin/",
+        "/images/"
+    ],
+    "setupFilesAfterEnv": ["./setup-tests.js"],
+    "collectCoverageFrom": [
+        "**/app/controllers/*.{js,jsx}",
+        "!**/node_modules/**",
+        "!**/vendor/**"
+    ],
     "reporters": [
         "default", [
             "./node_modules/jest-html-reporter",
