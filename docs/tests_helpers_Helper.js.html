@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Source: tests/helpers/JestHelper.js</title>
+	<title>Api Integration Testing Framework Source: tests/helpers/Helper.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Controller.html">Controller</a></li><li><a href="CreateCompanyService.html">CreateCompanyService</a></li><li><a href="CreateEmployeeService.html">CreateEmployeeService</a></li><li><a href="CreateUserService.html">CreateUserService</a></li><li><a href="DeleteEmployeeService.html">DeleteEmployeeService</a></li><li><a href="DeleteUserService.html">DeleteUserService</a></li><li><a href="EmployeeController.html">EmployeeController</a></li><li><a href="EmployeeListService.html">EmployeeListService</a></li><li><a href="Factory.html">Factory</a></li><li><a href="GetCompanyByNameService.html">GetCompanyByNameService</a></li><li><a href="GetEmployeeByIdService.html">GetEmployeeByIdService</a></li><li><a href="GetUserByEmailService.html">GetUserByEmailService</a></li><li><a href="GetUserByIdService.html">GetUserByIdService</a></li><li><a href="JestHelper.html">JestHelper</a></li><li><a href="PageController.html">PageController</a></li><li><a href="Service.html">Service</a></li><li><a href="ServiceFactory.html">ServiceFactory</a></li><li><a href="UpdateEmployeeService.html">UpdateEmployeeService</a></li><li><a href="UpdateUserService.html">UpdateUserService</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserListService.html">UserListService</a></li><li><a href="Util.html">Util</a></li>
+					<li><a href="Controller.html">Controller</a></li><li><a href="CreateCompanyService.html">CreateCompanyService</a></li><li><a href="CreateEmployeeService.html">CreateEmployeeService</a></li><li><a href="CreateUserService.html">CreateUserService</a></li><li><a href="DeleteEmployeeService.html">DeleteEmployeeService</a></li><li><a href="DeleteUserService.html">DeleteUserService</a></li><li><a href="EmployeeController.html">EmployeeController</a></li><li><a href="EmployeeListService.html">EmployeeListService</a></li><li><a href="Factory.html">Factory</a></li><li><a href="GetCompanyByNameService.html">GetCompanyByNameService</a></li><li><a href="GetEmployeeByIdService.html">GetEmployeeByIdService</a></li><li><a href="GetUserByEmailService.html">GetUserByEmailService</a></li><li><a href="GetUserByIdService.html">GetUserByIdService</a></li><li><a href="Helper.html">Helper</a></li><li><a href="PageController.html">PageController</a></li><li><a href="Service.html">Service</a></li><li><a href="ServiceFactory.html">ServiceFactory</a></li><li><a href="UpdateEmployeeService.html">UpdateEmployeeService</a></li><li><a href="UpdateUserService.html">UpdateUserService</a></li><li><a href="UserController.html">UserController</a></li><li><a href="UserListService.html">UserListService</a></li><li><a href="Util.html">Util</a></li>
 				</ul>
 			</li>
 			
@@ -65,17 +65,19 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: tests/helpers/JestHelper.js</h1>
+		<h1 class="page-title">Source: tests/helpers/Helper.js</h1>
     
 <section>
     <article>
         <pre
             class="sunlight-highlight-javascript linenums">const request = require("supertest");
+const formurlencoded = require("form-urlencoded").default;
+const { execSync } = require("child_process");
 
 /**
- * Common Jest Helper Related Methods
+ * Common Helper Related Methods
  */
-class JestHelper {
+class Helper {
 	/**
      * Initialize
 	 * @param {Express} app - app object
@@ -86,20 +88,108 @@ class JestHelper {
 	}
 
 	/**
-     * Count letter
+     * Get
      * @param {string} routeUrl - route url
+	 * @param {string} token - auth token
      * @return {object}
      * @example
-     *      jh.get("/home");
+     *      helper.get("/home");
      */
-	async get(routeUrl) {
-		const response = await request(this.app).get(`${this.routePrefix}${routeUrl}`);
+	async get(routeUrl, token = "") {
+		const response = await request(this.app)
+			.get(`${this.routePrefix}${routeUrl}`)
+			.set("auth_token", token);
 
 		return response;
 	}
+
+	/**
+     * Post
+     * @param {string} routeUrl - route url
+	 * @param {object} data - data to be passed
+	 * @param {string} token - auth token
+     * @return {object}
+     * @example
+     *      helper.post("/users", { firstName: "Nazmul" });
+     */
+	async post(routeUrl, data, token = "") {
+		const response = await request(this.app)
+			.post(`${this.routePrefix}${routeUrl}`)
+			.send(formurlencoded(data))
+			.set("auth_token", token)
+			.set("Accept", "application/json");
+
+		return response;
+	}
+
+	/**
+     * Put
+     * @param {string} routeUrl - route url
+	 * @param {object} data - data to be passed
+	 * @param {string} token - auth token
+     * @return {object}
+     * @example
+     *      helper.put("/users/1", { firstName: "Nazmul" });
+     */
+	async put(routeUrl, data, token = "") {
+		const response = await request(this.app)
+			.put(`${this.routePrefix}${routeUrl}`)
+			.send(formurlencoded(data))
+			.set("auth_token", token)
+			.set("Accept", "application/json");
+
+		return response;
+	}
+
+	/**
+     * Delete
+     * @param {string} routeUrl - route url
+	 * @param {string} token - auth token
+     * @return {object}
+     * @example
+     *      helper.delete("/users/1");
+     */
+	async delete(routeUrl, token = "") {
+		const response = await request(this.app)
+			.delete(`${this.routePrefix}${routeUrl}`)
+			.set("auth_token", token);
+
+		return response;
+	}
+
+	/**
+     * Get Auth token
+     * @param {object} data - data to be passed
+     * @return {string} token - auth token
+     * @example
+     *      helper.auth("/auth", { email: "nazmul.basher@gmail.com", password: "123" });
+     */
+	async auth(data) {
+		const response = await this.post("/auth", data);
+
+		return response.body.token;
+	}
+
+	/**
+     * Run any command using CLI
+     * @param {string} cmd - command
+     * @return {Promise}
+     * @example
+     *      helper.auth("./node_modules/.bin/sequelize db:create"});
+     */
+	run(cmd) {
+		return new Promise((resolve, reject) => {
+			try {
+				execSync(cmd, { stdio: "inherit" });
+				resolve("OK");
+			} catch (e) {
+				reject(e);
+			}
+		});
+	}
 }
 
-module.exports = JestHelper;
+module.exports = Helper;
 </pre>
     </article>
 </section>
@@ -145,7 +235,7 @@ module.exports = JestHelper;
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on 2019-09-24T13:21:23+06:00
+		on 2019-09-24T19:58:45+06:00
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

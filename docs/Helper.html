@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Api Integration Testing Framework Class: EmployeeController</title>
+	<title>Api Integration Testing Framework Class: Helper</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,16 +65,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: EmployeeController</h1>
+	<h1 class="page-title">Class: Helper</h1>
 <section>
 
 <header>
     
         <h2>
-        EmployeeController
+        Helper
         </h2>
         
-            <div class="class-description"><p>Employee Controller Related Methods</p></div>
+            <div class="class-description"><p>Common Helper Related Methods</p></div>
         
     
 </header>
@@ -86,19 +86,73 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="EmployeeController"><span class="type-signature"></span>new EmployeeController()</h4>
+    <h4 class="name" id="Helper"><span class="type-signature"></span>new Helper(app)</h4>
     
     
 </dt>
 <dd>
 
     
-
+    <div class="description">
+        <p>Initialize</p>
+    </div>
     
 
     
 
     
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Express</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>app object</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -136,8 +190,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-7">line 7</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-13">line 13</a>
 			</li>
 		</ul>
 	</dd>
@@ -188,7 +242,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="create"><span class="type-signature"></span>create(req, res)</h4>
+    <h4 class="name" id="auth"><span class="type-signature"></span>auth(data)</h4>
     
     
 </dt>
@@ -196,7 +250,7 @@
 
     
     <div class="description">
-        <p>Create new employee</p>
+        <p>Get Auth token</p>
     </div>
     
 
@@ -231,7 +285,7 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
@@ -248,31 +302,7 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>data to be passed</p></td>
         </tr>
 
     
@@ -316,8 +346,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-49">line 49</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-95">line 95</a>
 			</li>
 		</ul>
 	</dd>
@@ -346,9 +376,7 @@
     
             
 <div class="param-desc">
-    <ul>
-<li>newly created employee</li>
-</ul>
+    <p>token - auth token</p>
 </div>
 
 
@@ -359,7 +387,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">string</span>
 
 
 
@@ -372,7 +400,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ec.create(req, res);</pre>
+    <pre class="sunlight-highlight-javascript">helper.auth(&quot;/auth&quot;, { email: &quot;nazmul.basher@gmail.com&quot;, password: &quot;123&quot; });</pre>
 
 
     
@@ -382,7 +410,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="delete"><span class="type-signature"></span>delete(req, res)</h4>
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete(routeUrl, token)</h4>
     
     
 </dt>
@@ -390,7 +418,7 @@
 
     
     <div class="description">
-        <p>Delete employee</p>
+        <p>Delete</p>
     </div>
     
 
@@ -425,13 +453,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>routeUrl</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -442,20 +470,20 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
+            <td class="description last"><p>route url</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>res</code></td>
+                <td class="name"><code>token</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -466,7 +494,7 @@
 
             
 
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>auth token</p></td>
         </tr>
 
     
@@ -510,8 +538,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-102">line 102</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-80">line 80</a>
 			</li>
 		</ul>
 	</dd>
@@ -547,7 +575,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">object</span>
 
 
 
@@ -560,7 +588,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ec.delete(req, res);</pre>
+    <pre class="sunlight-highlight-javascript">helper.delete(&quot;/users/1&quot;);</pre>
 
 
     
@@ -570,7 +598,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="list"><span class="type-signature"></span>list(req, res)</h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get(routeUrl, token)</h4>
     
     
 </dt>
@@ -578,7 +606,7 @@
 
     
     <div class="description">
-        <p>Employees listing page</p>
+        <p>Get</p>
     </div>
     
 
@@ -613,13 +641,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>routeUrl</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -630,20 +658,20 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
+            <td class="description last"><p>route url</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>res</code></td>
+                <td class="name"><code>token</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -654,7 +682,7 @@
 
             
 
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>auth token</p></td>
         </tr>
 
     
@@ -698,8 +726,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-16">line 16</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-26">line 26</a>
 			</li>
 		</ul>
 	</dd>
@@ -727,12 +755,6 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    <ul>
-<li>all employees</li>
-</ul>
-</div>
-
 
 
 <dl>
@@ -741,7 +763,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">object</span>
 
 
 
@@ -754,7 +776,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ec.list(req, res);</pre>
+    <pre class="sunlight-highlight-javascript">helper.get(&quot;/home&quot;);</pre>
 
 
     
@@ -764,7 +786,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="update"><span class="type-signature"></span>update(req, res)</h4>
+    <h4 class="name" id="post"><span class="type-signature"></span>post(routeUrl, data, token)</h4>
     
     
 </dt>
@@ -772,7 +794,7 @@
 
     
     <div class="description">
-        <p>Update employee</p>
+        <p>Post</p>
     </div>
     
 
@@ -807,13 +829,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>routeUrl</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -824,14 +846,14 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
+            <td class="description last"><p>route url</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>res</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
@@ -848,7 +870,31 @@
 
             
 
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>data to be passed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>auth token</p></td>
         </tr>
 
     
@@ -892,8 +938,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-82">line 82</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-43">line 43</a>
 			</li>
 		</ul>
 	</dd>
@@ -921,12 +967,6 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    <ul>
-<li>updated employee</li>
-</ul>
-</div>
-
 
 
 <dl>
@@ -935,7 +975,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">object</span>
 
 
 
@@ -948,7 +988,7 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ec.update(req, res);</pre>
+    <pre class="sunlight-highlight-javascript">helper.post(&quot;/users&quot;, { firstName: &quot;Nazmul&quot; });</pre>
 
 
     
@@ -958,7 +998,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="view"><span class="type-signature"></span>view(req, res)</h4>
+    <h4 class="name" id="put"><span class="type-signature"></span>put(routeUrl, data, token)</h4>
     
     
 </dt>
@@ -966,7 +1006,7 @@
 
     
     <div class="description">
-        <p>View the employee by id</p>
+        <p>Put</p>
     </div>
     
 
@@ -1001,13 +1041,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>routeUrl</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type">string</span>
 
 
 
@@ -1018,14 +1058,14 @@
 
             
 
-            <td class="description last"><p>request object</p></td>
+            <td class="description last"><p>route url</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>res</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
@@ -1042,7 +1082,31 @@
 
             
 
-            <td class="description last"><p>response object</p></td>
+            <td class="description last"><p>data to be passed</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>auth token</p></td>
         </tr>
 
     
@@ -1086,8 +1150,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="app_controllers_EmployeeController.js.html">app/controllers/EmployeeController.js</a>,
-				 <a href="app_controllers_EmployeeController.js.html#sunlight-1-line-31">line 31</a>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-62">line 62</a>
 			</li>
 		</ul>
 	</dd>
@@ -1115,12 +1179,6 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    <ul>
-<li>the employee details</li>
-</ul>
-</div>
-
 
 
 <dl>
@@ -1129,7 +1187,7 @@
     </dt>
     <dd>
         
-<span class="param-type">json</span>
+<span class="param-type">object</span>
 
 
 
@@ -1142,7 +1200,171 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ec.view(req, res);</pre>
+    <pre class="sunlight-highlight-javascript">helper.put(&quot;/users/1&quot;, { firstName: &quot;Nazmul&quot; });</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="run"><span class="type-signature"></span>run(cmd)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Run any command using CLI</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cmd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>command</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="tests_helpers_Helper.js.html">tests/helpers/Helper.js</a>,
+				 <a href="tests_helpers_Helper.js.html#sunlight-1-line-108">line 108</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">helper.auth(&quot;./node_modules/.bin/sequelize db:create&quot;});</pre>
 
 
     
