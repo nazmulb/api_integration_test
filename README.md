@@ -28,6 +28,12 @@ npm i
 npm run db && npm run migrate && npm run seed
 ```
 
+### Running App:
+
+```sh
+npm run start:dev
+```
+
 ### Running Tests:
 
 ```sh
