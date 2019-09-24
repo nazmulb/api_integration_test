@@ -3,11 +3,11 @@ const { Helper } = require("./helpers");
 const helper = new Helper(app);
 let token;
 
-beforeAll(async () => {
-    token = await helper.auth({ email: "nazmul.basher@gmail.com", password: "123" });
-});
-
 describe("User Routes", () => {
+    beforeAll(async () => {
+        token = await helper.auth({ email: "nazmul.basher@gmail.com", password: "123" });
+    });
+
     test("Get all users without auth", async () => {
         const response = await helper.get("/users");
         expect(response.body).toEqual({ message: "Unauthorized: Missing or invalid auth token." });
@@ -34,7 +34,6 @@ describe("User Routes", () => {
         expect(response.body).toHaveProperty("id");
         expect(response.body).toHaveProperty("password");
         expect(typeof response.body).toBe('object');
-        expect(response.body.length).toBe(1);
         expect(response.statusCode).toBe(200);
     });
 
@@ -58,19 +57,15 @@ describe("User Routes", () => {
         expect(response.body.firstName).toBe("Abul");
         expect(typeof response.body).toBe('object');
         expect(response.statusCode).toBe(200);
-
-        response = await helper.get("/users", token);
-        expect(response.body.length).toBe(1);
-        expect(response.statusCode).toBe(200);
     });
 
     test("Delete user id 1", async () => {
-        let response = await helper.put("/users/1", token);
+        let response = await helper.delete("/users/2", token);
         expect(response.body).toEqual({ message: "User deleted" });
         expect(response.statusCode).toBe(200);
 
         response = await helper.get("/users", token);
-        expect(response.body.length).toBe(0);
+        expect(response.body.length).toBe(1);
         expect(response.statusCode).toBe(200);
     });
 });

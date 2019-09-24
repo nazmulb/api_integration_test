@@ -1,5 +1,6 @@
 const request = require("supertest");
 const formurlencoded = require("form-urlencoded").default;
+const { execSync } = require("child_process");
 
 /**
  * Common Helper Related Methods
@@ -87,7 +88,7 @@ class Helper {
 	/**
      * Get Auth token
      * @param {object} data - data to be passed
-     * @param {string} token - auth token
+     * @return {string} token - auth token
      * @example
      *      helper.auth("/auth", { email: "nazmul.basher@gmail.com", password: "123" });
      */
@@ -95,6 +96,24 @@ class Helper {
 		const response = await this.post("/auth", data);
 
 		return response.body.token;
+	}
+
+	/**
+     * Run any command using CLI
+     * @param {string} cmd - command
+     * @return {Promise}
+     * @example
+     *      helper.auth("./node_modules/.bin/sequelize db:create"});
+     */
+	run(cmd) {
+		return new Promise((resolve, reject) => {
+			try {
+				execSync(cmd, { stdio: "inherit" });
+				resolve("OK");
+			} catch (e) {
+				reject(e);
+			}
+		});
 	}
 }
 
