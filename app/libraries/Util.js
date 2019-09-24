@@ -1,7 +1,7 @@
 /**
  * Common Utility Related Methods
  */
-class Utility {
+class Util {
 	/**
      * Count letter
      * @param {string} str - given string
@@ -22,4 +22,4 @@ class Utility {
 	}
 }
 
-module.exports = Utility;
+module.exports = Util;
