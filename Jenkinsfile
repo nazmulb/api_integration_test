@@ -9,9 +9,14 @@ pipeline {
     CI = 'true'
   }
   stages {
-    stage('Build') {
+    stage('Install docker-compose') {
       steps {
-        sh 'npm install'
+        sh 'bash ./docker_com.sh'
+      }
+    }
+    stage('Start App') {
+      steps {
+        sh 'bash ./start.sh'
       }
     }
     stage('Test') {
@@ -22,13 +27,6 @@ pipeline {
     stage('Test Coverage') {
       steps {
         sh 'npm run test:coverage'
-      }
-    }
-    stage('Run App') {
-      steps {
-        sh 'npm start'
-        sleep 5
-        sh 'bash ./is_healthy.sh'
       }
     }
   }
