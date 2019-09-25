@@ -4,7 +4,9 @@ pipeline {
       image 'node:10'
       args '-p 8082:8082'
     }
-
+  }
+  environment {
+    CI = 'true'
   }
   stages {
     stage('Build') {
@@ -19,18 +21,15 @@ pipeline {
     }
     stage('Test Coverage') {
       steps {
-        sh 'npm run test-coverage'
+        sh 'npm run test:coverage'
       }
     }
     stage('Run App') {
       steps {
         sh 'npm start'
         sleep 5
-        sh 'curl http://localhost:8082/api/home'
+        sh 'bash ./is_healthy.sh'
       }
     }
-  }
-  environment {
-    CI = 'true'
   }
 }
