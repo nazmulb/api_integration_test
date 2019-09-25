@@ -1,7 +1,8 @@
 pipeline {
   agent {
-    node {
-      label '10'
+    docker {
+      image 'node:10'
+      args '-p 8082:8082'
     }
 
   }
@@ -28,5 +29,8 @@ pipeline {
         sh 'curl http://localhost:8082/api/home'
       }
     }
+  }
+  environment {
+    CI = 'true'
   }
 }
