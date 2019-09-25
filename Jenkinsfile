@@ -4,19 +4,17 @@ pipeline {
       image 'node:10'
       args '-p 8082:8082'
     }
-  }
-  environment {
-    CI = 'true'
+
   }
   stages {
     stage('Install docker-compose') {
       steps {
-        sh 'bash ./docker_com.sh'
+        sh 'bash ./jenkins/docker_com.sh'
       }
     }
     stage('Start App') {
       steps {
-        sh 'bash ./start.sh'
+        sh 'bash ./jenkins/start.sh'
       }
     }
     stage('Test') {
@@ -29,5 +27,8 @@ pipeline {
         sh 'npm run test:coverage'
       }
     }
+  }
+  environment {
+    CI = 'true'
   }
 }
