@@ -61,15 +61,15 @@ jobs:
         - run:
             name: Test
             command: |
-              #sh ./.circleci/scripts/load-nvm.sh
-              #npm version
+              sh ./.circleci/scripts/load-nvm.sh
+              npm version
               npm test
         - run:
             name: Generate Test Coverage Report
             command: |
               #sh ./.circleci/scripts/load-nvm.sh
               npm run test:coverage
-            when: always
+            when: success
         - store_test_results:
             path: ./reports
         - store_artifacts:
