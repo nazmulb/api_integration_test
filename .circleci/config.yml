@@ -74,7 +74,6 @@ jobs:
             command: |
               sh ./.circleci/scripts/load-nvm.sh
               npm run test:coverage
-            when: always
         - store_test_results:
             path: ./reports
         - store_artifacts:
