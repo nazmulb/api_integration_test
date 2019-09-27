@@ -124,10 +124,10 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              only: develop
       - deploy:
           requires:
-            - publish
+            - test
           filters:
             branches:
               only: master
