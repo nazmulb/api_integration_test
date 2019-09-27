@@ -2,7 +2,7 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: 'circleci/node:10'
+      - image: 'circleci/node:10.15.0'
     shell: /bin/bash
     working_directory: ~/app
   server:
@@ -63,19 +63,19 @@ jobs:
             command: |
               cat ./.circleci/scripts/nvm.sh >> ~/.bashrc
               source ~/.bashrc
-              NVM install 10
+              NVM install 10.15.0
         - run:
             name: Test
             command: |
               source ~/.bashrc
-              NVM use 10
+              NVM use 10.15.0
               npm version
               npm test
         - run:
             name: Generate Test Coverage Report
             command: |
               source ~/.bashrc
-              NVM use 10
+              NVM use 10.15.0
               npm run test:coverage
         - store_test_results:
             path: ./reports
