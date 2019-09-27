@@ -60,7 +60,10 @@ jobs:
             command: sh ./.circleci/scripts/start.sh
         - run:
             name: Test
-            command: npm test
+            command: |
+              nvm install 8.10.0
+              nvm use 8.10.0
+              npm test
         - run:
             name: Generate Test Coverage Report
             command: npm run test:coverage
