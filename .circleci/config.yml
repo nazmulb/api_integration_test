@@ -68,6 +68,7 @@ jobs:
             name: Test
             command: |
               source ~/.bashrc
+              cd ~/app
               NVM use
               npm version
               npm test
@@ -75,6 +76,7 @@ jobs:
             name: Generate Test Coverage Report
             command: |
               source ~/.bashrc
+              cd ~/app
               NVM use
               npm run test:coverage
         - store_test_results:
