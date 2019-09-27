@@ -118,6 +118,9 @@ workflows:
       - lint:
           requires:
             - build
+          filters:
+            branches:
+              only: develop
       - test:
           requires:
             - build
