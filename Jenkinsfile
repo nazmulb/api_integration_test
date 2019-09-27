@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Install docker-compose') {
       steps {
-        sh 'bash ./jenkins/docker_com.sh'
+        sh 'bash ./jenkins/docker-com.sh'
       }
     }
     stage('Start App') {
