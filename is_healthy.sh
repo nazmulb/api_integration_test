@@ -1,4 +1,4 @@
 #!/bin/bash
-set -e
+set -ex
 
-curl http://localhost:8082/api/users
+curl http://localhost:8082/api/about
