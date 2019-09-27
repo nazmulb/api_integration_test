@@ -63,19 +63,19 @@ jobs:
             command: |
               cat ./.circleci/scripts/nvm.sh >> ~/.bashrc
               source ~/.bashrc
-              NVM install 8.10.0
+              NVM install 10
         - run:
             name: Test
             command: |
               source ~/.bashrc
-              NVM use 8.10.0
+              NVM use 10
               npm version
               npm test
         - run:
             name: Generate Test Coverage Report
             command: |
               source ~/.bashrc
-              NVM use 8.10.0
+              NVM use 10
               npm run test:coverage
         - store_test_results:
             path: ./reports
