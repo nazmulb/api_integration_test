@@ -100,6 +100,9 @@ jobs:
       - attach_workspace:
           at: ~/app
       - run:
+          name: Install docker-compose
+          command: sh ./.circleci/scripts/docker-com.sh
+      - run:
           name: Deploy
           command: |
             sh ./.circleci/scripts/deploy.sh
