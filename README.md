@@ -25,6 +25,11 @@ Please clone this repo and run the following commands:
 git clone https://github.com/nazmulb/api_integration_test.git
 cd api_integration_test
 npm i
+```
+
+Please run your MySql server and run the following command:
+
+```sh
 npm run db && npm run migrate && npm run seed
 ```
 
