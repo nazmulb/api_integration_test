@@ -48,39 +48,65 @@ jobs:
           command: npm run lint
 
   test:
-      executor: server
-      steps:
-        - attach_workspace:
-            at: ~/app
-        - run:
-            name: Install docker-compose
-            command: sh ./.circleci/scripts/docker-com.sh
-        - run:
-            name: Start App
-            command: sh ./.circleci/scripts/start.sh
-        - run:
-            name: Install Node
-            command: |
-              cat ./.circleci/scripts/nvm.sh >> ~/.bashrc
-              source ~/.bashrc
-              NVM install 10.15.0
-        - run:
-            name: Test
-            command: |
-              source ~/.bashrc
-              NVM use 10.15.0
-              npm version
-              TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm test
-        - run:
-            name: Generate Test Coverage Report
-            command: |
-              source ~/.bashrc
-              NVM use 10.15.0
-              TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm run test:coverage
-        - store_test_results:
-            path: ./reports
-        - store_artifacts:
-            path: ./reports
+    executor: server
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Start MySql Server
+          command: sh ./.circleci/scripts/start-mysql.sh
+      - run:
+          name: Install Node
+          command: |
+            cat ./.circleci/scripts/nvm.sh >> ~/.bashrc
+            source ~/.bashrc
+            NVM install 10.15.0
+      - run:
+          name: Test
+          command: |
+            source ~/.bashrc
+            NVM use 10.15.0
+            npm version
+            TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm test
+      - run:
+          name: Generate Test Coverage Report
+          command: |
+            source ~/.bashrc
+            NVM use 10.15.0
+            TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm run test:coverage
+          when: always
+      - store_test_results:
+          path: ./reports
+      - store_artifacts:
+          path: ./reports
+
+  publish:
+    executor: server
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Install docker-compose
+          command: sh ./.circleci/scripts/docker-com.sh
+      - run:
+          name: Build Image
+          command: sh ./.circleci/scripts/build-image.sh
+      - docker-publish/check # DOCKER_LOGIN & DOCKER_PASSWORD need to be set as environment variable under a context of circleci.com.
+      - docker-publish/deploy: # It would publish the images to docker hub.
+          image: nazmulb/api_integration_test:latest
+  deploy:
+    executor: server
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Deploy
+          command: |
+            sh ./.circleci/scripts/deploy.sh
+      - run:
+          name: Health Check
+          command: |
+            sh ./is_healthy.sh
 workflows:
   version: 2
   build_and_test:
@@ -92,3 +118,16 @@ workflows:
       - test:
           requires:
             - build
+      - publish:
+          context: org-global
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - publish
+          filters:
+            branches:
+              only: master

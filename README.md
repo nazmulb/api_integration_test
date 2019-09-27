@@ -1,5 +1,6 @@
 # Node Microservice & Api Integration Testing Framework
 
+[![CircleCI Build Status](https://badgen.net/circleci/github/nazmulb/api_integration_test)](https://circleci.com/gh/nazmulb/api_integration_test)
 [![GitHub Last commit](https://badgen.net/github/last-commit/nazmulb/api_integration_test)](https://github.com/nazmulb/api_integration_test)
 [![GitHub commits](https://badgen.net/github/commits/nazmulb/api_integration_test)](https://github.com/nazmulb/api_integration_test/commits/master)
 [![GitHub stars](https://badgen.net/github/stars/nazmulb/api_integration_test)](https://github.com/nazmulb/api_integration_test)
