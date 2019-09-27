@@ -3,4 +3,4 @@ set -ex
 
 docker-compose up -d
 sleep 5
-./is_healthy.sh
+sh ./is_healthy.sh
