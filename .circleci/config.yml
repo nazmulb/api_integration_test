@@ -62,7 +62,7 @@ jobs:
             name: Test
             command: |
               #sh ./.circleci/scripts/load-nvm.sh
-              npm version
+              #npm version
               npm test
         - run:
             name: Generate Test Coverage Report
