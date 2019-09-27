@@ -61,7 +61,7 @@ jobs:
         - run:
             name: Install Node
             command: |
-              cat ~/app/.circleci/scripts/nvm.sh >> ~/.bashrc
+              cat ./.circleci/scripts/nvm.sh >> ~/.bashrc
               source ~/.bashrc
               NVM install 8.10.0
         - run:
