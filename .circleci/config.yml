@@ -54,8 +54,10 @@ jobs:
             at: ~/app
         - run:
             name: Install docker-compose
-            command: |
-              sh ./.circleci/scripts/docker_com.sh
+            command: sh ./.circleci/scripts/docker_com.sh
+        - run:
+            name: Start App
+            command: sh ./.circleci/scripts/start.sh
 workflows:
   version: 2
   build_and_test:
