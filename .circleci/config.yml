@@ -61,18 +61,21 @@ jobs:
         - run:
             name: Install Node
             command: |
-              sh ./.circleci/scripts/load-nvm.sh
-              nvm install v8.11.3 && nvm use v8.11.3 && nvm alias default v8.11.3
+              cat ~/app/.circleci/scripts/nvm.sh >> ~/.bashrc
+              source ~/.bashrc
+              NVM install 8.10.0
         - run:
             name: Test
             command: |
-              sh ./.circleci/scripts/load-nvm.sh
+              source ~/.bashrc
+              NVM use
               npm version
               npm test
         - run:
             name: Generate Test Coverage Report
             command: |
-              sh ./.circleci/scripts/load-nvm.sh
+              source ~/.bashrc
+              NVM use
               npm run test:coverage
         - store_test_results:
             path: ./reports
