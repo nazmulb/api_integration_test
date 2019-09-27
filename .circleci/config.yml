@@ -121,6 +121,9 @@ workflows:
       - test:
           requires:
             - build
+          filters:
+            branches:
+              only: develop
       - publish:
           context: org-global
           requires:
@@ -130,7 +133,7 @@ workflows:
               only: develop
       - deploy:
           requires:
-            - test
+            - build
           filters:
             branches:
               only: master
