@@ -59,21 +59,21 @@ jobs:
             name: Start App
             command: sh ./.circleci/scripts/start.sh
         - run:
-            name: Install node@8.10.0
+            name: Install Node
             command: |
-              ./.circleci/scripts/load-nvm.sh
+              sh ./.circleci/scripts/load-nvm.sh
               nvm install v8.10.0
               nvm alias default v8.10.0
         - run:
             name: Test
             command: |
-              ./.circleci/scripts/load-nvm.sh
+              sh ./.circleci/scripts/load-nvm.sh
               npm version
               npm test
         - run:
             name: Generate Test Coverage Report
             command: |
-              ./.circleci/scripts/load-nvm.sh
+              sh ./.circleci/scripts/load-nvm.sh
               npm run test:coverage
             when: always
         - store_test_results:
