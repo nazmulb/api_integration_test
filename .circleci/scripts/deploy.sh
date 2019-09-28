@@ -3,7 +3,7 @@ set -ex
 
 sh ./.circleci/scripts/start-mysql.sh
 docker pull nazmulb/api_integration_test
-docker run -d -p 8082:8082 -e DEV_DATABASE_URL: "mysql://root:123@mysql_server:3306/apimicro_dev" --name node_server nazmulb/api_integration_test
+docker run -d -p 8082:8082 -e DEV_DATABASE_URL: "mysql://root:123@localhost:3306/apimicro_dev" --name node_server nazmulb/api_integration_test
 
 #docker-compose -f docker-compose-deploy.yml up -d
 sleep 5
