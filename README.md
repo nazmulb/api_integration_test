@@ -17,6 +17,8 @@ We need the following to have a node microservice and api integration framework:
 - [Jest](https://jestjs.io/en/)
 - [Supertest](https://www.npmjs.com/package/supertest)
 - [jest-html-reporter](https://www.npmjs.com/package/jest-html-reporter)
+- [Circle CI](https://github.com/nazmulb/circleci)
+- [Docker](https://github.com/nazmulb/docker)
 
 ### Setup:
 
@@ -59,3 +61,7 @@ npm run test:coverage
 ### Test Report:
 
 <img alt="Report" src="https://raw.githubusercontent.com/nazmulb/api_integration_test/master/images/report.png" width="900px" />
+
+### CI/CD using Circle CI:
+
+<img alt="CI/CD using Circle CI" src="https://raw.githubusercontent.com/nazmulb/api_integration_test/master/images/circleci.png" width="900px" />
