@@ -128,7 +128,7 @@ workflows:
               only: dev
       - deploy:
           requires:
-            - publish
+            - build
           filters:
             branches:
               only: master
