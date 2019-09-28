@@ -85,7 +85,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - setup_remote_docker
       - docker-publish/check # DOCKER_LOGIN & DOCKER_PASSWORD need to be set as environment variable under a context of circleci.com.
       - docker-publish/build: # It would build the docker image from Dockerfile.
           tag: latest
