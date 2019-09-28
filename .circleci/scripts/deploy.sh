@@ -1,10 +1,13 @@
 #!/bin/bash
 set -ex
 
-docker-compose -f docker-compose-deploy.yml up -d
+sh ./.circleci/scripts/start-mysql.sh
+docker pull nazmulb/api_integration_test
+docker run -d -p 8082:8082 -e DEV_DATABASE_URL: "mysql://root:123@mysql_server:3306/apimicro_dev" --name node_server nazmulb/api_integration_test
+
+#docker-compose -f docker-compose-deploy.yml up -d
 sleep 5
-docker-compose ps
-#curl http://localhost:8082/api/about
+docker ps
+curl http://localhost:8082/api/about
 #npm run db && npm run migrate && npm run seed
-DEV_DATABASE_URL="mysql://root:123@localhost:3306/apimicro_dev" npm run db
 #docker-compose -f docker-compose-deploy.yml exec app bash -c "npm run db && npm run migrate && npm run seed"

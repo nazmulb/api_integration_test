@@ -9,8 +9,8 @@ executors:
     machine:
       docker_layer_caching: true
     shell: /bin/bash
-    working_directory: ~/app   
-   
+    working_directory: ~/app
+
 orbs:
   docker-publish: circleci/docker-publish@0.1.4
 
@@ -85,12 +85,11 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - run:
-          name: Build Image
-          command: sh ./.circleci/scripts/build-image.sh
+      - setup_remote_docker
       - docker-publish/check # DOCKER_LOGIN & DOCKER_PASSWORD need to be set as environment variable under a context of circleci.com.
-      - docker-publish/deploy: # It would publish the images to docker hub.
-          image: nazmulb/api_integration_test:latest
+      - docker-publish/build: # It would build the docker image from Dockerfile.
+          tag: latest
+      - docker-publish/deploy # It would publish the images to docker hub.
   deploy:
     executor: server
     steps:
