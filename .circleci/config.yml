@@ -86,9 +86,6 @@ jobs:
       - attach_workspace:
           at: ~/app
       - run:
-          name: Install docker-compose
-          command: sh ./.circleci/scripts/docker-com.sh
-      - run:
           name: Build Image
           command: sh ./.circleci/scripts/build-image.sh
       - docker-publish/check # DOCKER_LOGIN & DOCKER_PASSWORD need to be set as environment variable under a context of circleci.com.
@@ -99,9 +96,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - run:
-          name: Install docker-compose
-          command: sh ./.circleci/scripts/docker-com.sh
       - run:
           name: Deploy
           command: |
