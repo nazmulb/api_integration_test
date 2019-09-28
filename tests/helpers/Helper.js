@@ -95,7 +95,7 @@ class Helper {
 	async auth(data) {
 		const response = await this.post("/auth", data);
 
-		return response.body.token;
+		return response.body;
 	}
 
 	/**
