@@ -9,5 +9,5 @@ docker run -d -p 8082:8082 --name node_server --link mysql_server:mysql -e DEV_D
 sleep 5
 docker ps
 curl http://localhost:8082/api/about
-#npm run db && npm run migrate && npm run seed
+npm run db && npm run migrate && npm run seed
 #docker-compose -f docker-compose-deploy.yml exec app bash -c "npm run db && npm run migrate && npm run seed"
