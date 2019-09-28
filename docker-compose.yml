@@ -12,10 +12,7 @@ services:
   app:
     links:
      - db
-    build: .
-    image: nazmulb/api_integration_test
-    volumes:
-      - .:/var/www/html
+    image: nazmulb/api_integration_test:latest
     ports:
       - "8082:8082"
     environment:

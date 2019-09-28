@@ -15,7 +15,7 @@ const auth = async (req, res, next) => {
 			return res.status(401).json({ message: "Unauthorized: Invalid password." });
 		}
 
-		const newToken = { token: jwt.sign({ email: user.email }, config.JWT_SECRET_KEY) };
+		const newToken = jwt.sign({ email: user.email }, config.JWT_SECRET_KEY);
 		return res.json(newToken);
 	} catch (e) {
 		return next(e.message);

@@ -1,4 +1,6 @@
 #!/bin/bash
 set -ex
 
-curl http://localhost:8082/api/auth -v -u nazmul.basher@gmail.com:123 -X POST
+export AUTH=$(curl -d "email=nazmul.basher@gmail.com&password=123" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:8082/api/auth)
+
+curl http://localhost:8082/api/users -v -H "auth_token: $AUTH" -X GET
