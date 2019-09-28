@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:10.15.0
 RUN mkdir -p /var/www/api_integration_test
 ADD . /var/www/api_integration_test
 WORKDIR /var/www/api_integration_test
