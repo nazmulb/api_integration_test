@@ -110,15 +110,9 @@ workflows:
       - lint:
           requires:
             - build
-          filters:
-            branches:
-              only: master
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only: master
       - publish:
           context: org-global
           requires:
