@@ -1,0 +1,57 @@
+# Sequelize:
+https://sequelize.org/master/manual/getting-started.html
+https://github.com/sequelize/cli
+
+./node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,password:string
+./node_modules/.bin/sequelize model:generate --name Company --attributes name:string
+./node_modules/.bin/sequelize model:generate --name Employee --attributes designation:string,department:string,joiningDate:dateonly,salary:float
+
+If you need to add associate two tables then you need to manually update the model and migration files.
+
+./node_modules/.bin/sequelize db:create
+./node_modules/.bin/sequelize db:migrate
+
+./node_modules/.bin/sequelize seed:generate --name user
+./node_modules/.bin/sequelize db:seed:all
+
+
+# Jenkins:
+https://jenkins.io/doc/book/installing/#on-macos-and-linux
+https://jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean
+
+docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkinsci/blueocean
+
+
+
+# Help links:
+
+## Jest: globalSetup, globalTeardown & SuperAgent:
+https://itnext.io/test-driven-develop-your-api-with-jest-supertest-in-node-js-7e1c6489b0a6
+https://zellwk.com/blog/endpoint-testing/
+https://github.com/facebook/jest/issues/5422
+https://stackoverflow.com/questions/30848530/how-to-programmatically-run-sequelize-migrations
+https://github.com/sequelize/sequelize/issues/326
+
+
+## Database:
+https://zellwk.com/blog/jest-and-mongoose/
+https://zellwk.com/blog/seed-database/
+https://medium.com/@CaptainFuntastic/sequelize-migrations-with-relations-a8fd40a0912b
+https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+https://www.oriechinedu.com/posts/getting-started-with-sequelize-and-postgres
+https://www.rithmschool.com/courses/intermediate-node-express/api-tests-with-jest
+https://medium.com/@prajramesh93/getting-started-with-node-express-and-mysql-using-sequelize-ed1225afc3e0
+https://www.codementor.io/mirko0/how-to-use-sequelize-with-node-and-express-i24l67cuz
+https://codehandbook.org/setting-up-sequelize-express-mysql/
+http://zetcode.com/javascript/sequelize/
+https://medium.com/infocentric/setup-a-rest-api-with-sequelize-and-express-js-fae06d08c0a7
+https://arjunphp.com/build-restful-api-using-node-express-sequelize/
+https://grokonez.com/node-js/sequelize-orm-build-crud-restapis-with-nodejs-express-sequelize-mysql

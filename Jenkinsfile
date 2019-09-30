@@ -1,34 +1,31 @@
 pipeline {
   agent {
     docker {
-      image 'node:10'
+      image 'node:10.15.0'
       args '-p 8082:8082'
-    }
-
-  }
-  stages {
-    stage('Install docker-compose') {
-      steps {
-        sh 'bash ./jenkins/docker-com.sh'
-      }
-    }
-    stage('Start App') {
-      steps {
-        sh 'bash ./jenkins/start.sh'
-      }
-    }
-    stage('Test') {
-      steps {
-        sh 'npm test'
-      }
-    }
-    stage('Test Coverage') {
-      steps {
-        sh 'npm run test:coverage'
-      }
     }
   }
   environment {
     CI = 'true'
+  }
+  stages {
+    stage('build') {
+      steps {
+        sh 'npm install',
+        sh 'npm run lint'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'bash ./.circleci/scripts/start-mysql.sh',
+        sh 'TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm test'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'bash ./.circleci/scripts/deploy.sh',
+        sh 'bash ./is_healthy.sh'
+      }
+    }
   }
 }
