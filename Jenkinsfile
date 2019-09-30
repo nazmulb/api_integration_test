@@ -4,9 +4,7 @@ pipeline {
       image 'node:10.15.0'
       args '-p 8082:8082'
     }
-  }
-  environment {
-    CI = 'true'
+
   }
   stages {
     stage('build') {
@@ -19,6 +17,7 @@ pipeline {
       steps {
         sh 'bash ./.circleci/scripts/start-mysql.sh'
         sh 'TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm test'
+        sh 'sh \'TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm run test:coverage\''
       }
     }
     stage('Deploy') {
@@ -27,5 +26,8 @@ pipeline {
         sh 'bash ./is_healthy.sh'
       }
     }
+  }
+  environment {
+    CI = 'true'
   }
 }
