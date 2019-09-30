@@ -11,19 +11,19 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'npm install',
+        sh 'npm install'
         sh 'npm run lint'
       }
     }
     stage('Test') {
       steps {
-        sh 'bash ./.circleci/scripts/start-mysql.sh',
+        sh 'bash ./.circleci/scripts/start-mysql.sh'
         sh 'TEST_DATABASE_URL=mysql://root:123@localhost:3306/apimicro_test npm test'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'bash ./.circleci/scripts/deploy.sh',
+        sh 'bash ./.circleci/scripts/deploy.sh'
         sh 'bash ./is_healthy.sh'
       }
     }
